@@ -6,9 +6,9 @@ import {
   collection,
   query,
   onSnapshot,
-  getDocs,
   serverTimestamp,
 } from "firebase/firestore";
+import Jweets from "components/Jweets";
 const Home = ({ userObj }) => {
   console.log(userObj);
   const [jweet, setJweet] = useState("");
@@ -56,9 +56,11 @@ const Home = ({ userObj }) => {
       </form>
       <div>
         {jweets.map((jweet) => (
-          <div key={jweet.id}>
-            <h4>{jweet.text}</h4>
-          </div>
+          <Jweets
+            key={jweet.id}
+            jweet={jweet}
+            isOwner={jweet.createId === userObj.uid}
+          />
         ))}
       </div>
     </>
