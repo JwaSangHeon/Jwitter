@@ -5,10 +5,10 @@ import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 const Jweets = ({ jweet, isOwner }) => {
   const [editing, setEditing] = useState(false);
   const [newJweet, setNewJweet] = useState(jweet.text);
-  console.log(jweet.text);
+  // console.log(jweet.text);
   const onClickDelete = async () => {
     const ok = window.confirm("정말로 삭제하시겠습니까?");
-    console.log(ok);
+    // console.log(ok);
     const jweetTextRef = doc(dbService, "Jweets", `${jweet.id}`);
     if (ok) {
       await deleteDoc(jweetTextRef);
